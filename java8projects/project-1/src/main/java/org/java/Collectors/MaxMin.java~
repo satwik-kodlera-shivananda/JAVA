@@ -1,0 +1,4 @@
+package org.java.Collectors;
+
+public class MaxMinImpl {
+}
