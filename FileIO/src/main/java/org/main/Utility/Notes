@@ -1,0 +1,66 @@
+When working with Java, you can handle various file types depending on the use case.
+Here’s a categorized list:
+
+1. Text-Based Files
+.txt (Plain Text)
+.csv (Comma-Separated Values)
+.log (Log Files)
+.json (JavaScript Object Notation)
+.xml (Extensible Markup Language)
+.yaml / .yml (YAML Ain’t Markup Language)
+
+
+2. Java-Specific Files
+.java (Java Source Code)
+.class (Compiled Java Bytecode)
+.jar (Java Archive)
+.war (Web Application Archive)
+.ear (Enterprise Archive)
+.properties (Java Properties Configuration)
+
+3. Microsoft Office & Document Files
+.docx (Microsoft Word)
+.xlsx (Microsoft Excel)
+.pptx (Microsoft PowerPoint)
+.pdf (Portable Document Format)
+
+
+4. Database & Serialized Files
+.db (Database Files)
+.sqlite (SQLite Database)
+.sql (SQL Script Files)
+.dat (Data Files)
+.ser (Serialized Java Objects)
+
+
+5. Image & Multimedia Files
+.jpg / .jpeg (JPEG Image)
+.png (Portable Network Graphics)
+.gif (Graphics Interchange Format)
+.bmp (Bitmap Image)
+.tiff (Tagged Image File Format)
+.svg (Scalable Vector Graphics)
+.mp3 (Audio File)
+.wav (Waveform Audio)
+.mp4 (MPEG-4 Video)
+.avi (Audio Video Interleave)
+
+
+6. Compressed & Archive Files
+.zip (ZIP Archive)
+.tar (Tape Archive)
+.gz (Gzip Compressed File)
+.rar (RAR Archive)
+
+
+7. Other Special Formats
+.ini (Initialization Files)
+.cfg (Configuration Files)
+.md (Markdown)
+.html / .htm (HyperText Markup Language)
+.css (Cascading Style Sheets)
+.js (JavaScript)
+
+
+Java provides libraries like java.io, java.nio, java.util.zip,
+Gson (for JSON), Apache POI (for Excel/Word), and JSch (for SSH file transfers) to handle these file types.

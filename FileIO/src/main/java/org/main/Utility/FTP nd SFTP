@@ -1,0 +1,191 @@
+For handling FTP (File Transfer Protocol) and SFTP (Secure File Transfer Protocol) in Java,
+there are several libraries available:
+
+
+
+FTP Libraries:
+    These libraries are used for standard FTP operations (upload, download, delete, rename, etc.).
+
+Apache Commons Net (Popular & Lightweight)
+
+Library: commons-net
+
+Features:
+        FTP and FTPS (FTP over SSL)
+        Simple to use for basic FTP tasks
+
+Dependency (Maven)
+
+<dependency>
+    <groupId>commons-net</groupId>
+    <artifactId>commons-net</artifactId>
+    <version>3.9.0</version>
+</dependency>
+
+
+
+EXAMPLE:
+
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FTPUploadExample {
+    public static void main(String[] args) {
+        String server = "ftp.example.com";
+        int port = 21;
+        String user = "username";
+        String pass = "password";
+
+        FTPClient ftpClient = new FTPClient();
+        try {
+            ftpClient.connect(server, port);
+            ftpClient.login(user, pass);
+            ftpClient.enterLocalPassiveMode();
+            ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
+
+            String remoteFile = "/uploads/test.txt";
+            FileInputStream inputStream = new FileInputStream("test.txt");
+
+            boolean done = ftpClient.storeFile(remoteFile, inputStream);
+            inputStream.close();
+
+            if (done) {
+                System.out.println("File uploaded successfully.");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                ftpClient.logout();
+                ftpClient.disconnect();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+
+SFTP Libraries:
+
+
+SFTP uses SSH (Secure Shell) protocol, and standard Java does not support it natively.
+
+JSch (Java Secure Channel)
+
+Library: jsch
+
+Features:
+        Secure File Transfer Protocol (SFTP)
+        Secure Shell / SSH key Authentication
+
+ Dependency (Maven):
+
+ <dependency>
+     <groupId>com.jcraft</groupId>
+     <artifactId>jsch</artifactId>
+     <version>0.1.55</version>
+ </dependency>
+
+
+
+
+EXAMPLE:
+import com.jcraft.jsch.*;
+
+import java.io.FileInputStream;
+
+public class SFTPUploadExample {
+    public static void main(String[] args) {
+        String host = "sftp.example.com";
+        int port = 22;
+        String user = "username";
+        String password = "password";
+        String localFile = "test.txt";
+        String remoteFile = "/uploads/test.txt";
+
+        try {
+            JSch jsch = new JSch();
+            Session session = jsch.getSession(user, host, port);
+            session.setPassword(password);
+            session.setConfig("StrictHostKeyChecking", "no");
+            session.connect();
+
+            Channel channel = session.openChannel("sftp");
+            channel.connect();
+            ChannelSftp sftpChannel = (ChannelSftp) channel;
+
+            FileInputStream inputStream = new FileInputStream(localFile);
+            sftpChannel.put(inputStream, remoteFile);
+            inputStream.close();
+
+            sftpChannel.exit();
+            session.disconnect();
+
+            System.out.println("File uploaded successfully.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
+
+Apache Mina SSHD
+
+Library: mina-sshd
+
+Features:
+
+        SFTP and SSH server implementation
+        Supports both client and server functionalities
+
+Dependency (Maven)
+
+
+<dependency>
+    <groupId>org.apache.sshd</groupId>
+    <artifactId>sshd-sftp</artifactId>
+    <version>2.10.0</version>
+</dependency>
+
+
+
+
+
+SSHJ
+
+
+Library: sshj
+Features:
+        Secure SSH connections
+        Supports SCP & SFTP
+
+
+Dependency (Maven):
+
+    <dependency>
+        <groupId>com.hierynomus</groupId>
+        <artifactId>sshj</artifactId>
+        <version>0.34.0</version>
+    </dependency>
+
+
+
+
+Which One Should You Use?
+For FTP → Use Apache Commons Net (commons-net)
+For SFTP → Use JSch (lightweight) or SSHJ (modern alternative)
+For advanced needs (e.g., SSH server, custom handling) → Use Apache Mina SSHD
+
+
+
+
+
