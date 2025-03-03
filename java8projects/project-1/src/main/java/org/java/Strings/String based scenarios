@@ -1,0 +1,51 @@
+Basic Java String Questions
+What is a String in Java?
+How are String objects stored in memory?
+What is the difference between String, StringBuffer, and StringBuilder?
+Why are String objects immutable in Java?
+How do you create a String object? Explain the difference between
+    String s1 = "Hello";
+    String s2 = new String("Hello");
+What is the String pool in Java?
+What is the difference between == and .equals() when comparing Strings?
+How can you convert a String to a char[] and vice versa?
+How do you check if a String is empty or null?
+What does the intern() method do?
+
+What are the main methods of the String class?
+How do you split a String in Java?
+How do you check if a String contains only digits?
+What are the different ways to reverse a String in Java?
+What is the difference between substring() and split()?
+What is the output of the following code?
+String s1 = "Java";
+String s2 = "Java";
+System.out.println(s1 == s2);
+What happens when you modify a String object?
+How do you convert a String to an int in Java?
+Explain the difference between toUpperCase() and toLowerCase().
+What is the replace() method, and how is it different from replaceAll()?
+
+
+
+Advanced Java String Questions
+How does the StringBuilder class improve performance over String?
+What is the difference between StringBuffer and StringBuilder?
+What are the possible memory leaks when working with Strings?
+Explain StringJoiner and its use cases.
+How does String.format() work?
+How can you efficiently concatenate multiple Strings?
+What is Charset in Java, and how does it relate to String?
+Explain the concept of pass-by-value in the context of Strings.
+How do strip(), trim(), and stripLeading()/stripTrailing() differ?
+How do you remove duplicate characters from a String?
+What is the difference between equals() and equalsIgnoreCase()?
+What is the difference between contains() and contains(CharSequence)?
+What is the difference between indexOf() and lastIndexOf()?
+What is the difference between replace() and replaceAll()?
+What is the difference between regionMatches() and regionMatches(boolean, int, String, int, int)?
+What is the difference between split() and split(String)?
+What is the difference between substring() and subSequence()?
+What is the difference between toLowerCase() and toUpperCase()?
+
+
